@@ -20,7 +20,6 @@ cloud {
     workspaces {
       name = "Demo-github-actions"
     }
-  }
 }
 provider "aws" {
   region = "us-west-2"
