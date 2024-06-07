@@ -13,14 +13,16 @@ terraform {
     }
   }
   required_version = ">= 1.1.0"
-}
-backend "remote" {
+
+  cloud {
     organization = "AvaJJC"
 
     workspaces {
       name = "Demo-github-actions"
     }
+  }
 }
+
 provider "aws" {
   region = "us-west-2"
 }
@@ -61,7 +63,7 @@ resource "aws_instance" "web" {
 resource "aws_security_group" "web-sg" {
   name = "${random_pet.sg.id}-sg"
   ingress {
-    from_port   = 8078
+    from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
